@@ -1,0 +1,25 @@
+CREATE TABLE store (video_game TEXT, rating TEXT, system TEXT, quantity INTEGER, price INTEGER);
+INSERT INTO store VALUES ("The Legend of Zelda: Breath of the Wild", "E", "Nintendo Switch", 4, 59.99);
+INSERT INTO store VALUES ("The Legend of Zelda: Skyward Sword", "E", "Nintendo Switch", 7, 59.99);
+INSERT INTO store VALUES ("Uncharted 4: A Thief's End", "T", "Playstation 4", 9, 69.99);
+INSERT INTO store VALUES ("Uncharted: The Lost Legacy", "T", "Playstation 4", 8, 69.99);
+INSERT INTO store VALUES ("Halo", "M", "Xbox", 4 , 39.99);
+INSERT INTO store VALUES ("Mario", "E", "Nintendo Switch", 12, 49.99 );
+INSERT INTO store VALUES ("Forza", "T", "Playstation 4", 15, 79.99);
+INSERT INTO store VALUES ("Metroid", "T", "Nintendo Switch", 12, 30.00);
+INSERT INTO store VALUES ("Smash Bros", "T", "Nintendo Switch", 12, 49.99);
+INSERT INTO store VALUES ("Kingdom Hearts", "E", "Playstation 4", 14, 29.99);
+INSERT INTO store VALUES ("DBFZ", "T", "Playstation 4", 18, 49.99);
+INSERT INTO store VALUES ("Pikmin", "E", "Nintendo Switch", 33, 35.00);
+INSERT INTO store VALUES ("Fire Emblem", "T", "Nintedno Switch", 40, 40.00);
+INSERT INTO store VALUES ("F Zero", "T", "Nintendo Switch", 45, 48.00);
+INSERT INTO store VALUES ("Star Fox", "T", "Nintendo Switch", 33, 99.99);
+
+--display the database based on price--
+SELECT * FROM store ORDER BY price;
+
+--what 5 items have the most stock--
+SELECT * FROM store ORDER BY quantity limit 5;
+
+--what is the average price of all Playstation 4 games--
+SELECT AVG(price) "Average PS4 price" FROM store WHERE system = 'Playstation 4'; 
