@@ -1,0 +1,68 @@
+/* In this project, I created two different tables with the intent of joining the key information together
+   In this case, I took the names of the protagonists and antagonists in the series JoJo's Bizarre Adventures
+   and put them into one table*/
+CREATE TABLE joestars (id INTEGER PRIMARY KEY,
+                        name TEXT,
+                        powers TEXT, 
+                        story TEXT);
+
+INSERT INTO joestars (id, name,  powers, story)
+    VALUES (1, "Jonathan Joestar", "Hamon", "Phantom Blood");
+
+INSERT INTO joestars (id, name, powers, story)
+    VALUES (2, "Joseph Joestar", "Hamon", "Battle Tendency");
+
+INSERT INTO joestars (id, name, powers, story)
+    VALUES (3, "Jotaro Kujo", "Star Platinum", "Stardust Crusaders");
+
+INSERT INTO joestars (id, name, powers, story)
+    VALUES (4, "Josuke Higashitaka", "Crazy Diamond", "Diamond is Unbreakable");
+    
+INSERT INTO joestars (id, name, powers, story)
+    VALUES (5, "Giorno Giovanna", "Gold Experience", "Vento Aureo");
+    
+INSERT INTO joestars (id, name, powers, story)
+    VALUES (6, "Jolyne Kujo", "Stone Free", "Stone Ocean");
+
+INSERT INTO joestars (id, name, powers, story)
+    VALUES (7, "Johnny Joestar", "Tusk", "Steel Ball Run");
+    
+INSERT INTO joestars (id, name, powers, story)
+    VALUES (8, "Josuke Higashitaka", "Soft and Wet", "Jojolion");
+
+
+CREATE TABLE antagonists (id INTEGER PRIMARY KEY,
+                        name TEXT,
+                        powers TEXT, 
+                        story TEXT);
+
+INSERT INTO antagonists (id, name, powers, story)
+    VALUES (1, "Dio Brando", "Vampirism", "Phantom Blood");
+    
+INSERT INTO antagonists (id, name, powers, story)
+    VALUES (2, "Kars", "Pillar Man", "Battle Tendency");
+    
+INSERT INTO antagonists (id, name, powers, story)
+    VALUES (3, "DIO", "The World", "Stardust Crusaders");
+    
+INSERT INTO antagonists (id, name, powers, story)
+    VALUES (4, "Kira Yoshikage", "Killer Queen", "Diamond is Unbreakable");
+
+INSERT INTO antagonists (id, name, powers, story)
+    VALUES (5, "Diavolo", "King Crimson", "Vento Aureo");
+    
+INSERT INTO antagonists (id, name, powers, story)
+    VALUES (6, "Father Pucci", "White Snake", "Stone Free");
+    
+INSERT INTO antagonists (id, name, powers, story)
+    VALUES (7, "Funny Valentine", "Dirty Deeds Done Dirt Cheap", "Steel Ball Run");    
+
+INSERT INTO antagonists (id, name, powers, story)
+    VALUES (8, "Tohru", "Wonder of U", "Jojolion");
+SELECT * FROM antagonists;
+SELECT * FROM joestars;
+
+\* Once the tables were completed I put them together via their ids. I matched the protagonist with their respective antagonist*/
+SELECT joestars.name, antagonists.name, joestars.powers, antagonists.powers from joestars
+JOIN antagonists ON 
+joestars.id = antagonists.id;
