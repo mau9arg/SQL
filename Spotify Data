@@ -1,6 +1,7 @@
 # In this project I took this list of the top 50 songs of 2021 in Spotify and came up with some queries and questions
 
 # Creating the table: 
+
 CREATE TABLE BIT_DB.Spotifydata (
 id integer PRIMARY KEY,
 artist_name varchar NOT NULL,
@@ -24,16 +25,29 @@ time_signature integer NOT NULL
 
 # I decided to try and answer some basic questions about the data first. 
 # I checked the average danceability, energy, and popularity by artist and track name
+
 SELECT artist_name, avg(danceability), avg(popularity), track_name, avg(energy) FROM BIT_DB.Spotifydata
 GROUP BY artist_name, track_name
 
 # I then decided to see which songs went over 3 minutes long, or in this case 180,000 ms
+
 SELECT artist_name, track_name, duration_ms FROM BIT_DB.Spotifydata
 GROUP BY artist_name, track_name
 HAVING HAVING (duration_ms/60000) >= 3
 
 # I also wanted to see the Top 10 most popular songs
+
 select artist_name, track_name, popularity from BIT_DB.Spotifydata
 order by popularity desc 
 limit 10
 
+# I created a CTE to calculate the average popularity of the artists in the table and using the CTE I 
+then found those that had a popularity of 90 or more and labelled them as a "Top Star"
+
+with popularityTable as (
+select artist_name, avg(popularity) as average_popularity
+from BIT_DB.Spotifydata 
+group by artist_name)
+
+select artist_name, average_popularitry , 'Top Star' as tag from popularityTable
+where average_popularity >= 90
